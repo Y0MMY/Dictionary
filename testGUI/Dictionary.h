@@ -34,15 +34,11 @@ public:
 		{
 			throw KeyNotFoundException<int>(key);
 		}
-		return this->_key.at(key);
+		return i->second;
 	}
 	void set(const Key& key, const Value& value) override
 	{
-		if (_key.count(key))
-		{
-			_key.at(key) = value;
-		}
-		else _key.emplace(key, value);
+		_key.insert_or_assign(key, value);
 	}
 	bool is_set(const Key& key) const override
 	{
