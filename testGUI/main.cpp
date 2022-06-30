@@ -8,12 +8,11 @@ int main()
 {
 	Dictionary<int, std::string> dic;
 	dic.set(0, "First string");
-	dic.set(1, "Second string");
+	dic.set(0, "Secong string");
 	try
 	{
 		std::cout << dic.get(0) << std::endl;
-		std::cout << dic.is_set(1) << std::endl;
-		std::cout << dic.get(2) << std::endl;
+		std::cout << dic.is_set(0) << std::endl;
 	}
 	catch (const KeyNotFoundException<int> &e)
 	{

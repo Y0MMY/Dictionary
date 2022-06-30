@@ -30,8 +30,7 @@ public:
 public:
 	const Value& get(const Key& key) const override
 	{
-		const auto i = _key.find(key);
-		if (i == _key.end())
+		if (!_key.count(key))
 		{
 			throw KeyNotFoundException<int>(key);
 		}
@@ -39,8 +38,7 @@ public:
 	}
 	void set(const Key& key, const Value& value) override
 	{
-		const auto i = _key.find(key);
-		if (i != _key.end())
+		if (_key.count(key))
 		{
 			_key.at(key) = value;
 		}
@@ -48,7 +46,6 @@ public:
 	}
 	bool is_set(const Key& key) const override
 	{
-		const auto i = _key.find(key);
-		return i == _key.end() ? false : true;
+		return !_key.count(key) ? false : true;
 	}
 };
