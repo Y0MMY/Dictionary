@@ -30,9 +30,10 @@ public:
 public:
 	const Value& get(const Key& key) const override
 	{
-		if (!_key.count(key))
+		const auto i = _key.find(key);
+		if (i == _key.end())
 		{
-			throw KeyNotFoundException<int>(key);
+			throw KeyNotFoundException<Key>(key);
 		}
 		return i->second;
 	}
